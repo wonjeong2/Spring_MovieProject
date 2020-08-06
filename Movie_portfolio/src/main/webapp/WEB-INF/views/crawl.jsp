@@ -31,7 +31,7 @@
         <li>
         	<div id="movieList" style="display:inline-block; margin-right:50px;">
 	       		<img src="${item.img}" style="display:block;" >
-	       		<a href="/movieList"><button>예매하기</button></a>
+	       		<a href="/movieList?movieTitle=${item.movieTitle}"><button>예매하기</button></a>
        		</div>
         </li>
         </c:forEach>
