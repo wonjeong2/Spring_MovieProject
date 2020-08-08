@@ -43,12 +43,7 @@
   
         
 <script>
-		const button = document.querySelector('button');
 		
-		button.onclick = function() {
-		  console.log(button.value);
-		}
-
         const date = new Date();
         // console.log(date.getFullYear());
         const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -58,7 +53,6 @@
             const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
             const year = date.getFullYear();
             const month = date.getMonth();
-            
             for (i = date.getDate(); i <= lastDay.getDate(); i++) {
 
                 const button = document.createElement("button");
@@ -86,12 +80,17 @@
                 //날짜 넣기
                 spanDay.innerHTML = i;
                 button.append(spanDay);
+                //button.append(i);
                 reserveDate.append(button);
 
-                dayClickEvent(button);
+              /*   dayClickEvent(button); */
             }
 
+        
 
+
+
+/* 
         function dayClickEvent(button) {
             button.addEventListener("click", function() {
                 const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
@@ -100,7 +99,7 @@
                 })
                 button.classList.add("movie-date-wrapper-active");
             })
-        }
+        } */
     </script>
 </body>
 </html>
