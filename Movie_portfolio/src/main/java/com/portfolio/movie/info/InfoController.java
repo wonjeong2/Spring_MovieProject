@@ -29,7 +29,9 @@ public class InfoController {
 	@RequestMapping(value="/movieList", method= RequestMethod.GET)
 	public String movieList(Model model, String movieTitle) {
 
-		List<InfoVO> list = service.crawl();
+		List<InfoVO> list = service.crawl();	
+		List<DateVO> list2 = service.date();  
+		
 		List<String> movieTitleList = new ArrayList<String>();
 		
 		for(int i = 0; i < list.size(); i++) { //영화 제목만 담기
@@ -37,6 +39,7 @@ public class InfoController {
 		}
 		
 		model.addAttribute("movieTitleList", movieTitleList);
+		model.addAttribute("date", list2);  
 		
 		return "movie/movieList";
 	}
