@@ -43,4 +43,13 @@ public class InfoController {
 		
 		return "movie/movieList";
 	}
+	
+	
+	@RequestMapping(value="/seat", method= RequestMethod.POST)
+	public String info(ReserveVO param) {
+		System.out.println(param.getMovieTitle());
+		System.out.println(param.getDate());
+		System.out.println(param.getLocation());
+		return "movie/seat";
+	}
 }

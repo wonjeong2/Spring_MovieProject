@@ -9,28 +9,27 @@
 </head>
 <body>
 	<!-- 영화제목 뿌리기 -->
+	<form action="/seat" method="post">
 	<div>
 		영화
 	</div>    
-    <select name="year">
 		<c:forEach items="${movieTitleList}" var="item">
-			<option value="${item}">${item}</option>
+			<input type="radio" name="movieTitle" value="${item}">${item}</option>
 		</c:forEach>
-	</select>
     <!-- 극장(지역) 뿌리기 -->
     <div>극장</div>
-	    <div id="location" onclick="getvalue()">
-	    	<button onclick="getvalue()">대구</button>
-	    	<button>대구수성</button>
-	    	<button>대구스타디움</button>
-	    	<button>대구아카데미</button>
-	    	<button>대구월성</button>
-	    	<button>대구이시아</button>
-	    	<button>대구칠곡</button>
-	    	<button>대구한일</button>
-	    	<button>대구현대</button>
-	    </div>
-    
+
+    	<select name="location">
+			<option value="대구">대구</option>
+			<option value="대구수성">대구수성</option>
+			<option value="대구스타디움">대구스타디움</option>
+			<option value="대구아카데미">대구아카데미</option>
+			<option value="대구월성">대구월성</option>
+			<option value="대구이시아">대구이시아</option>
+			<option value="대구칠곡">대구칠곡</option>
+			<option value="대구한일">대구한일</option>
+			<option value="대구현대">대구현대</option>
+	</select>
     <!-- 시간 뿌리기 
     	<div class="day-part">
             <div class="reserve-title">날짜</div>
@@ -38,13 +37,12 @@
         </div>
 -->
 	<div>날짜</div>
-	<div>  
-		<c:forEach items="${date}" var="item">
-	        	<div>
-		       		<button>${item}</button>
-	       		</div>
-        </c:forEach>
-    </div>
-    
+		<select name="date">
+			<c:forEach items="${date}" var="item">
+				<option value="${item}">${item}</option>
+			</c:forEach>
+		</select>
+	<input type="submit" value="좌석선택">
+    </form>
 </body>
 </html>
