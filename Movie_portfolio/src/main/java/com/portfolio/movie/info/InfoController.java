@@ -1,6 +1,6 @@
 package com.portfolio.movie.info;
 
-import java.util.ArrayList;
+import java.util.ArrayList;	
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,11 @@ public class InfoController {
 		return "crawl";
 	}
 	
-	
+	@RequestMapping(value="/movieChart", method=RequestMethod.GET)
+	public String movieChart(Model model) {
+		model.addAttribute("list",service.crawl());
+		return "movie/movieChart";
+	}
 	@RequestMapping(value="/reserve", method= RequestMethod.GET)
 	public String movieList(Model model, String movieTitle) {
 
