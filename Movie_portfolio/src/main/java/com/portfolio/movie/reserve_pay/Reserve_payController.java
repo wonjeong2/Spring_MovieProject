@@ -40,7 +40,7 @@ public class Reserve_payController {
 		public String movieList(Model model, String movieTitle) {
 
 			List<InfoVO> list = service2.crawl();	
-			List<DateVO> list2 = service2.date();  
+			List<DateVO> list2 = service.date();  
 			
 			List<String> movieTitleList = new ArrayList<String>();
 			
@@ -55,7 +55,7 @@ public class Reserve_payController {
 		}
 		
 		
-		@RequestMapping(value="/seat", method= RequestMethod.POST)
+	 @RequestMapping(value="/seat", method= RequestMethod.POST)
 		public String info(ReserveVO param, Model model) {
 			System.out.println(param.getMovieTitle());
 			System.out.println(param.getDate());
@@ -67,7 +67,14 @@ public class Reserve_payController {
 			vo.setLocation(param.getLocation());
 			vo.setMovieTitle(param.getMovieTitle());
 			
+			String[][] str = service.seat();
+			for(int i=0; i<str.length; i++) {
+				for(int j=0; j<str[i].length; j++) {
+					System.out.println("Controller:"+str[i][j]);
+				}
+			}
 			
+			model.addAttribute("seat",str);
 			return "movie/seat";
 		}
 	

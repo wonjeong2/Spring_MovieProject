@@ -83,4 +83,21 @@ public class InfoService {
 		}
 		return list;
 	}
+	
+	public String[][] seat() {
+		String[][] seat2 = new String[7][7];
+		String[] seatArr = { "A", "B", "C", "D", "E", "F","G"};
+		String[] seatArr2 = {  "1", "2", "3", "4", "5", "6" ,"7"};
+		for (int i = 0; i < 7; i++) {
+			
+			for (int z = 0; z < 7; z++) {
+				seat2[i][z]=seatArr[i]+seatArr2[z];
+				System.out.print(seat2[i][z]+" ");
+				}
+			System.out.println();
+			}
+
+		return seat2;
+	}
+
 }
