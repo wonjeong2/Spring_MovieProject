@@ -28,7 +28,7 @@
 	        <a class="nav-link" href="/movieChart">MovieChart</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/boardList">Reserve</a>
+	        <a class="nav-link" href="/reserve">Reserve</a>
 	      </li>
 	     </ul>
 	   	 <ul class="nav navbar-nav navbar-right">
@@ -38,12 +38,12 @@
         		</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
          	<li class="dropdown-item">
-         		<c:if test="${loginUser.cid eq null }"><a href="/login" style="text-decoration:none ; color:black;">Login</a></c:if>
-         		<c:if test="${loginUser.cid ne null }"><a href="/logout" style="text-decoration:none ; color:black;">Logout</a></c:if>
+         		<c:if test="${loginUser.cid eq null }"><a href="/member/login" style="text-decoration:none ; color:black;">Login</a></c:if>
+         		<c:if test="${loginUser.cid ne null }"><a href="/member/logout" style="text-decoration:none ; color:black;">Logout</a></c:if>
          	<li>
           	<li class="dropdown-item">
-          		<c:if test="${loginUser.cid eq null }"><a href="/join" style="text-decoration:none; color:black;">Join</a></c:if>
-         		<c:if test="${loginUser.cid ne null }"><a href="/myLecture" style="text-decoration:none; color:black;">My Reserve</a></c:if>
+          		<c:if test="${loginUser.cid eq null }"><a href="/member/join" style="text-decoration:none; color:black;">Join</a></c:if>
+         		<c:if test="${loginUser.cid ne null }"><a href="/myReserve" style="text-decoration:none; color:black;">My Reserve</a></c:if>
           	<li>
           </ul>
       	</li>
