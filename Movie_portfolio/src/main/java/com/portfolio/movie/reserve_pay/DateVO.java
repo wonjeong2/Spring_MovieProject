@@ -1,4 +1,4 @@
-package com.portfolio.movie.info;
+package com.portfolio.movie.reserve_pay;
 
 public class DateVO {
 	private int year;

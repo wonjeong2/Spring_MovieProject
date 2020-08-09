@@ -8,38 +8,33 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.portfolio.movie.info.DateVO;
 import com.portfolio.movie.info.InfoService;
-import com.portfolio.movie.info.InfoVO;
-import com.portfolio.movie.info.ReserveVO;
 
 @Controller
 public class Reserve_payController {
+	
 	@Autowired
 	private Reserve_payService service;
-	private InfoService service2;
 	
 	
 	 @RequestMapping(value="/kakaoPay", method = RequestMethod.GET ) 
 	 public String kakaoPay() { 
 		 return "pay/kakaoPay"; 
 	 }
+	 
+	 
 	 @RequestMapping(value="/myReservePage", method = RequestMethod.GET) 
 	 public String myReservePage() { 
 		 
 		 return "reserve/myReserve"; 
 	 }
-	 @RequestMapping(value="/movieList2", method = RequestMethod.GET) 
-	 public String movieList() { 
-		 
-		 return "movie/movieList"; 
-	 }
+
+	 
 	 @RequestMapping(value="/reserve", method= RequestMethod.GET)
 		public String movieList(Model model, String movieTitle) {
 
-			List<InfoVO> list = service2.crawl();	
+			List<InfoVO> list = service.crawl();	
 			List<DateVO> list2 = service.date();  
 			
 			List<String> movieTitleList = new ArrayList<String>();
@@ -61,7 +56,7 @@ public class Reserve_payController {
 			System.out.println(param.getDate());
 			System.out.println(param.getLocation());
 			
-			ReserveVO vo = new ReserveVO();
+			ReserveVO vo = new ReserveVO();  //영화제목, 상영관, 날짜 담기
 			
 			vo.setDate(param.getDate());
 			vo.setLocation(param.getLocation());

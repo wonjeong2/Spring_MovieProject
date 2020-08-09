@@ -13,7 +13,7 @@
 <c:forEach var="rowData" items="${seat }">
 	<tr>
 		<c:forEach var="celData" items="${rowData }">
-			<td>${celData }</td>
+			<td>${celData}</td>
 		</c:forEach> 
 	</tr>
 </c:forEach>
