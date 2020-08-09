@@ -29,39 +29,5 @@ public class InfoController {
 	public String movieChart(Model model) {
 		model.addAttribute("list",service.crawl());
 		return "movie/movieChart";
-	}
-	@RequestMapping(value="/reserve", method= RequestMethod.GET)
-	public String movieList(Model model, String movieTitle) {
-
-		List<InfoVO> list = service.crawl();	
-		List<DateVO> list2 = service.date();  
-		
-		List<String> movieTitleList = new ArrayList<String>();
-		
-		for(int i = 0; i < list.size(); i++) { //영화 제목만 담기
-			movieTitleList.add(list.get(i).getMovieTitle());
-		}
-		
-		model.addAttribute("movieTitleList", movieTitleList);
-		model.addAttribute("date", list2);  
-		
-		return "movie/reserve";
-	}
-	
-	
-	@RequestMapping(value="/seat", method= RequestMethod.POST)
-	public String info(ReserveVO param, Model model) {
-		System.out.println(param.getMovieTitle());
-		System.out.println(param.getDate());
-		System.out.println(param.getLocation());
-		
-		ReserveVO vo = new ReserveVO();
-		
-		vo.setDate(param.getDate());
-		vo.setLocation(param.getLocation());
-		vo.setMovieTitle(param.getMovieTitle());
-		
-		
-		return "movie/seat";
-	}
+	}	
 }

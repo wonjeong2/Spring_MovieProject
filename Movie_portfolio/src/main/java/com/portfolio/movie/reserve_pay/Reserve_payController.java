@@ -1,5 +1,8 @@
 package com.portfolio.movie.reserve_pay;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,10 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.portfolio.movie.info.DateVO;
+import com.portfolio.movie.info.InfoService;
+import com.portfolio.movie.info.InfoVO;
+import com.portfolio.movie.info.ReserveVO;
+
 @Controller
 public class Reserve_payController {
 	@Autowired
 	private Reserve_payService service;
+	private InfoService service2;
 	
 	
 	 @RequestMapping(value="/kakaoPay", method = RequestMethod.GET ) 
@@ -27,17 +36,40 @@ public class Reserve_payController {
 		 
 		 return "movie/movieList"; 
 	 }
-	/*
-	 *
-	 * 
-	 * @RequestMapping(value="/kakaoPayReady", method = RequestMethod.POST ) public
-	 * String kakaoPayReady() { return "redirect:"+service.kakaoPay(); }
-	 * 
-	 * @RequestMapping(value="/kakaoPaySuccess", method=RequestMethod.GET) public
-	 * void kakaoPaySuccess(@RequestParam("pg_token")String pg_token, Model model) {
-	 * System.out.println("pg_token:"+pg_token); }
-	 */
-	
+	 @RequestMapping(value="/reserve", method= RequestMethod.GET)
+		public String movieList(Model model, String movieTitle) {
+
+			List<InfoVO> list = service2.crawl();	
+			List<DateVO> list2 = service2.date();  
+			
+			List<String> movieTitleList = new ArrayList<String>();
+			
+			for(int i = 0; i < list.size(); i++) { //영화 제목만 담기
+				movieTitleList.add(list.get(i).getMovieTitle());
+			}
+			
+			model.addAttribute("movieTitleList", movieTitleList);
+			model.addAttribute("date", list2);  
+			
+			return "movie/reserve";
+		}
+		
+		
+		@RequestMapping(value="/seat", method= RequestMethod.POST)
+		public String info(ReserveVO param, Model model) {
+			System.out.println(param.getMovieTitle());
+			System.out.println(param.getDate());
+			System.out.println(param.getLocation());
+			
+			ReserveVO vo = new ReserveVO();
+			
+			vo.setDate(param.getDate());
+			vo.setLocation(param.getLocation());
+			vo.setMovieTitle(param.getMovieTitle());
+			
+			
+			return "movie/seat";
+		}
 	
 	
 }
