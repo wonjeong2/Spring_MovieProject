@@ -6,22 +6,57 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<link rel="stylesheet" href="/resources/bootstrap_css/bootstrap.css">
 <link rel="stylesheet"  href="/resources/common_css/style.css">
-<script src="/resources/bootstrap_js/bootstrap.js"></script>
 <script src="/resources/common_js/common_js.js"></script>
 <script src="/resources/axios_js/axios.min.js"></script>
 <title>Main</title>
 </head>
 <body>
 <!-- nav영역 -->
-	<c:import url = "/resources/layout/nav.jsp" var = "navbar">
-	</c:import>
-	${navbar }
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	 <a class="navbar-brand" href="/index">Movie</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/crawl">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/movieChart">MovieChart</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/boardList">Reserve</a>
+	      </li>
+	     </ul>
+	   	 <ul class="nav navbar-nav navbar-right">
+      		<li class="dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="dropdown-togle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          		MemberShip<span class="caret"></span>
+        		</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+         	<li class="dropdown-item">
+         		<c:if test="${loginUser.cid eq null }"><a href="/login" style="text-decoration:none ; color:black;">Login</a></c:if>
+         		<c:if test="${loginUser.cid ne null }"><a href="/logout" style="text-decoration:none ; color:black;">Logout</a></c:if>
+         	<li>
+          	<li class="dropdown-item">
+          		<c:if test="${loginUser.cid eq null }"><a href="/join" style="text-decoration:none; color:black;">Join</a></c:if>
+         		<c:if test="${loginUser.cid ne null }"><a href="/myLecture" style="text-decoration:none; color:black;">My Reserve</a></c:if>
+          	<li>
+          </ul>
+      	</li>
+    	</ul>
+ 	<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Movie Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 	
 	
-  <!-- 메인 슬라이드 -->
-
+<!-- 메인 슬라이드 -->
 <div class="wrap">  
   <div class="container_visual">
     <!-- Promotion -->
@@ -41,9 +76,16 @@
 
 
 <!-- footer 영역 -->
-
-
-
+<footer>
+	<div class="footer_container">
+		<div class=footer_logo id="facebook">
+			<a href="https://www.facebook.com/" target="_blank"><img src="/resources/img/facebook.png" alt="페이스북 바로가기"></a>
+		</div>
+		<div class=footer_logo id="instagram">
+			<a href="https://www.instagram.com/?hl=ko" target="_blank"><img src="/resources/img/instargram.png" alt="인스타그램 바로가기"></a>
+		</div>
+	</div>
+</footer>	
 
 <script type="text/javascript">
 //크롤링 이미지 슬라이더 기능 구현
