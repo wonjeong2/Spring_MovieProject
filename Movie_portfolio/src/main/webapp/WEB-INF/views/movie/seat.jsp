@@ -7,6 +7,5 @@
 <title>좌석선택</title>
 </head>
 <body>
-좌석선택
 </body>
 </html>

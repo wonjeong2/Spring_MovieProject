@@ -26,7 +26,7 @@ public class InfoController {
 	}
 	
 	
-	@RequestMapping(value="/movieList", method= RequestMethod.GET)
+	@RequestMapping(value="/reserve", method= RequestMethod.GET)
 	public String movieList(Model model, String movieTitle) {
 
 		List<InfoVO> list = service.crawl();	
@@ -41,15 +41,23 @@ public class InfoController {
 		model.addAttribute("movieTitleList", movieTitleList);
 		model.addAttribute("date", list2);  
 		
-		return "movie/movieList";
+		return "movie/reserve";
 	}
 	
 	
 	@RequestMapping(value="/seat", method= RequestMethod.POST)
-	public String info(ReserveVO param) {
+	public String info(ReserveVO param, Model model) {
 		System.out.println(param.getMovieTitle());
 		System.out.println(param.getDate());
 		System.out.println(param.getLocation());
+		
+		ReserveVO vo = new ReserveVO();
+		
+		vo.setDate(param.getDate());
+		vo.setLocation(param.getLocation());
+		vo.setMovieTitle(param.getMovieTitle());
+		
+		
 		return "movie/seat";
 	}
 }
