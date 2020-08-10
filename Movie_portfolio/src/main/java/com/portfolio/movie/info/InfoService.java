@@ -9,8 +9,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
-import com.portfolio.movie.reserve_pay.InfoVO;
-
 
 @Service
 public class InfoService {

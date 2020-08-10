@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.portfolio.movie.info.InfoService;
+import com.portfolio.movie.info.InfoVO;
 
 @Controller
 public class Reserve_payController {
 	
 	@Autowired
 	private Reserve_payService service;
+	@Autowired
+	private InfoService service2;
 	
 	
 	 @RequestMapping(value="/kakaoPay", method = RequestMethod.GET ) 
@@ -34,7 +37,7 @@ public class Reserve_payController {
 	 @RequestMapping(value="/reserve", method= RequestMethod.GET)
 		public String movieList(Model model, String movieTitle) {
 
-			List<InfoVO> list = service.crawl();	
+			List<InfoVO> list = service2.crawl();	
 			List<DateVO> list2 = service.date();  
 			
 			List<String> movieTitleList = new ArrayList<String>();

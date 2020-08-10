@@ -1,4 +1,4 @@
-package com.portfolio.movie.reserve_pay;
+package com.portfolio.movie.info;
 
 public class InfoVO {
 	private String rank;
