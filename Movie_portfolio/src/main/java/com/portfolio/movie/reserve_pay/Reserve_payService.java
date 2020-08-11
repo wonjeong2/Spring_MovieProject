@@ -16,7 +16,6 @@ import com.portfolio.movie.info.InfoVO;
 @Service
 public class Reserve_payService {
 
-
 	public List<DateVO> date() {
 
 		List<DateVO> list = new ArrayList<DateVO>();
@@ -62,4 +61,15 @@ public class Reserve_payService {
 		return seat2;
 	}
 
+//	public int movieAge(int movieAge) {
+//		int result = 0;
+//		if (result < 19) {
+//			System.out.println("청소년");
+//		} else if (result > 19 || result < 66) {
+//			System.out.println("성인(일반)");
+//		} else {
+//			System.out.println("우대권");
+//		}
+//		return result;
+//	}
 }

@@ -14,67 +14,73 @@ import com.portfolio.movie.info.InfoVO;
 
 @Controller
 public class Reserve_payController {
-	
+
 	@Autowired
 	private Reserve_payService service;
 	@Autowired
 	private InfoService service2;
-	
-	
-	 @RequestMapping(value="/kakaoPay", method = RequestMethod.GET ) 
-	 public String kakaoPay() { 
-		 return "pay/kakaoPay"; 
-	 }
-	 
-	 
-	 @RequestMapping(value="/myReservePage", method = RequestMethod.GET) 
-	 public String myReservePage() { 
-		 
-		 return "reserve/myReserve"; 
-	 }
 
-	 
-	 @RequestMapping(value="/reserve", method= RequestMethod.GET)
-		public String movieList(Model model, String movieTitle) {
+	@RequestMapping(value = "/kakaoPay", method = RequestMethod.GET)
+	public String kakaoPay() {
+		return "pay/kakaoPay";
+	}
 
-			List<InfoVO> list = service2.crawl();	
-			List<DateVO> list2 = service.date();  
-			
-			List<String> movieTitleList = new ArrayList<String>();
-			
-			for(int i = 0; i < list.size(); i++) { //영화 제목만 담기
-				movieTitleList.add(list.get(i).getMovieTitle());
-			}
-			
-			model.addAttribute("movieTitleList", movieTitleList);
-			model.addAttribute("date", list2);  
-			
-			return "movie/reserve";
+	@RequestMapping(value = "/myReservePage", method = RequestMethod.GET)
+	public String myReservePage() {
+
+		return "reserve/myReserve";
+	}
+
+	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
+	public String movieList(Model model, String movieTitle) {
+
+		List<InfoVO> list = service2.crawl();
+		List<DateVO> list2 = service.date();
+
+		List<String> movieTitleList = new ArrayList<String>();
+
+		for (int i = 0; i < list.size(); i++) { // 영화 제목만 담기
+			movieTitleList.add(list.get(i).getMovieTitle());
 		}
+
+		model.addAttribute("movieTitleList", movieTitleList);
+		model.addAttribute("date", list2);
+
+		return "movie/reserve";
+	}
+
+	@RequestMapping(value = "/seat", method = RequestMethod.POST)
+	public String info(ReserveVO param, Model model) {
+		System.out.println(param.getMovieTitle());
+		System.out.println(param.getDate());
+		System.out.println(param.getLocation());
+
+		ReserveVO vo = new ReserveVO(); // 영화제목, 상영관, 날짜 담기
+
+		vo.setDate(param.getDate());
+		vo.setLocation(param.getLocation());
+		vo.setMovieTitle(param.getMovieTitle());
+
+//			String[][] str = service.seat();
+//			for(int i=0; i<str.length; i++) {
+//				for(int j=0; j<str[i].length; j++) {
+//					System.out.println("Controller:"+str[i][j]);
+//				}
+//			}
+
+		
+		model.addAttribute("seat", service.seat());
+		return "movie/seat";
+	}
+
+	@RequestMapping(value = "kakaoPay", method = RequestMethod.POST)
+	public String pay(ReserveVO param, Model model) {
+		System.out.println("성인" +param.getAdultNum());
+		System.out.println("청소년" +param.getChildNum());
+		System.out.println("우대권:" + param.getOlderNum());
 		
 		
-	 @RequestMapping(value="/seat", method= RequestMethod.POST)
-		public String info(ReserveVO param, Model model) {
-			System.out.println(param.getMovieTitle());
-			System.out.println(param.getDate());
-			System.out.println(param.getLocation());
-			
-			ReserveVO vo = new ReserveVO();  //영화제목, 상영관, 날짜 담기
-			
-			vo.setDate(param.getDate());
-			vo.setLocation(param.getLocation());
-			vo.setMovieTitle(param.getMovieTitle());
-			
-			String[][] str = service.seat();
-			for(int i=0; i<str.length; i++) {
-				for(int j=0; j<str[i].length; j++) {
-					System.out.println("Controller:"+str[i][j]);
-				}
-			}
-			
-			model.addAttribute("seat",str);
-			return "movie/seat";
-		}
-	
-	
+
+		return "pay/kakaoPay";
+	}
 }
