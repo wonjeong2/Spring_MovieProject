@@ -1,6 +1,6 @@
 package com.portfolio.movie.reserve_pay;
 
-import java.util.ArrayList;
+import java.util.ArrayList;	
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,6 @@ public class Reserve_payController {
 	private Reserve_payService service;
 	@Autowired
 	private InfoService service2;
-
-	@RequestMapping(value = "/kakaoPay", method = RequestMethod.GET)
-	public String kakaoPay() {
-		return "pay/kakaoPay";
-	}
 
 	@RequestMapping(value = "/myReservePage", method = RequestMethod.GET)
 	public String myReservePage() {
@@ -73,14 +68,15 @@ public class Reserve_payController {
 		return "movie/seat";
 	}
 
-	@RequestMapping(value = "kakaoPay", method = RequestMethod.POST)
+	@RequestMapping(value ="/kakaoPay", method = RequestMethod.POST)
 	public String pay(ReserveVO param, Model model) {
-		System.out.println("성인" +param.getAdultNum());
-		System.out.println("청소년" +param.getChildNum());
-		System.out.println("우대권:" + param.getOlderNum());
 		
+		ReserveVO p = new ReserveVO();
+		System.out.println("totalAmount:"+param.getTotalSeatAmount());
+		p.setMovieTitle("반도");
+		p.setTotalSeatAmount(param.getTotalSeatAmount());
 		
-
+		model.addAttribute("data",p);
 		return "pay/kakaoPay";
 	}
 }

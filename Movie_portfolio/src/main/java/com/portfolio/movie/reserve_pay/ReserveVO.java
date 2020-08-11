@@ -4,9 +4,9 @@ public class ReserveVO {
 	private String movieTitle;
 	private String location;
 	private String date;
-	private String adultNum;
-	private String childNum;
-	private String olderNum;
+	private int totalSeatAmount;
+	private String selectedSeat;
+	
 	public String getMovieTitle() {
 		return movieTitle;
 	}
@@ -25,24 +25,19 @@ public class ReserveVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getAdultNum() {
-		return adultNum;
+	public int getTotalSeatAmount() {
+		return totalSeatAmount;
 	}
-	public void setAdultNum(String adultNum) {
-		this.adultNum = adultNum;
+	public void setTotalSeatAmount(int totalSeatAmount) {
+		this.totalSeatAmount = totalSeatAmount;
 	}
-	public String getChildNum() {
-		return childNum;
+	public String getSelectedSeat() {
+		return selectedSeat;
 	}
-	public void setChildNum(String childNum) {
-		this.childNum = childNum;
+	public void setSelectedSeat(String selectedSeat) {
+		this.selectedSeat = selectedSeat;
 	}
-	public String getOlderNum() {
-		return olderNum;
-	}
-	public void setOlderNum(String olderNum) {
-		this.olderNum = olderNum;
-	}
-
+	
+	
 	
 }

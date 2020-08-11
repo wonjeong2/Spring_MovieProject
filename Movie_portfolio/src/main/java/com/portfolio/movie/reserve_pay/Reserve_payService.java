@@ -29,7 +29,7 @@ public class Reserve_payService {
 
 		for (int i = 0; i < 7; i++) {
 			day[i] = date;
-			System.out.println(day[i]);
+			/* System.out.println(day[i]); */
 			date++;
 
 		}
@@ -40,7 +40,7 @@ public class Reserve_payService {
 		}
 
 		for (int i = 0; i < 7; i++) {
-			System.out.println(list.get(i).toString());
+			/* System.out.println(list.get(i).toString()); */
 		}
 		return list;
 	}
@@ -53,9 +53,9 @@ public class Reserve_payService {
 
 			for (int z = 0; z < 7; z++) {
 				seat2[i][z] = seatArr[i] + seatArr2[z];
-				System.out.print(seat2[i][z] + " ");
+				/* System.out.print(seat2[i][z] + " "); */
 			}
-			System.out.println();
+			/* System.out.println(); */
 		}
 
 		return seat2;

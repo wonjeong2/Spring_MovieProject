@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,30 +24,23 @@
 			pg:'kakaopay', //결제경로
 			pay_method:'card', //결제 수단
 			merchant_uid:'merchant'+new Date().getTime(),  //결제시간
-			name:영화예매
-			amount:10000
+			name:"영화예매",
+			movietitle:"${data.movieTitle}",
+			amount:"${data.totalSeatAmount}원"
 		},function(rsp){
 			if(rsp.success){
-				jQuery.ajax({ //결제정보를 조회를 위해 ajax로 imp_uid전달
-					url:"/payments/complete",
-					type:'POST',
-					dataType:'json',
-					data:{
-						imp_uid:rsp.imp_uid
-					}
-				}).done(function(data) {
-					if(everythings_fine){
-						msg='결제가 완료되었습니다.';
-						msg+='\n고유ID:'+rsp.imp_uid;
-						msg+='\n상점 거래ID:'+rsp.merchant_uid;
-						msg+='\결제 금액:'+rsp.paid_amount;
-						msg+='카드 승인번호:'+rsp.apply_num;
-						
-						alert(msg);
-					}
-					//성공시 이동할 페이지
-					location.href="/myReservePage"
-				});
+				
+				msg='결제가 완료되었습니다.';
+				msg+='\n고유ID:'+rsp.imp_uid;
+				msg+='\n상점 거래ID:'+rsp.merchant_uid;
+				msg+='\결제 금액:'+rsp.paid_amount;
+				msg+='카드 승인번호:'+rsp.apply_num;
+				
+				alert(msg);
+				
+				//성공시 이동할 페이지
+				location.href="/myReservePage"
+				
 			}else{
 				msg = '결제에 실패하였습니다.';
 				msg += '에러내용:'+rsp.error_msg;
