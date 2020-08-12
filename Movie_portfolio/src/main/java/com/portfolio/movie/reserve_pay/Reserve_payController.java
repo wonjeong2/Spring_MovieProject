@@ -1,7 +1,9 @@
 package com.portfolio.movie.reserve_pay;
 
-import java.util.ArrayList;		
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +23,19 @@ public class Reserve_payController {
 	private InfoService service2;
 
 	@RequestMapping(value = "/myReservePage", method = RequestMethod.GET)
-	public String myReservePage() {
+	public String myReservePage(HttpSession hs, Model model) {
+		
+		//DB에 예약정보 담기
+		
+		hs.removeAttribute("reserveInfo");  //세션값 삭제
+		
+		
 
+		
 		return "member/myReserve";
 	}
 
-	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
+	@RequestMapping(value = "/reserve", method = RequestMethod.POST)
 	public String movieList(Model model, String movieTitle) {
 
 		List<InfoVO> list = service2.crawl();
@@ -45,16 +54,19 @@ public class Reserve_payController {
 	}
 
 	@RequestMapping(value = "/seat", method = RequestMethod.POST)
-	public String info(ReserveVO param, Model model) {
+	public String info(ReserveVO param, Model model, HttpSession hs) {
 		System.out.println(param.getMovieTitle());
 		System.out.println(param.getDate());
 		System.out.println(param.getLocation());
+		
+		
+//		ReserveVO vo = new ReserveVO(); 영화제목, 상영관, 날짜 담기
 
-		ReserveVO vo = new ReserveVO(); // 영화제목, 상영관, 날짜 담기
-
-		vo.setDate(param.getDate());
-		vo.setLocation(param.getLocation());
-		vo.setMovieTitle(param.getMovieTitle());
+//		vo.setDate(param.getDate());
+//		vo.setLocation(param.getLocation());
+//		vo.setMovieTitle(param.getMovieTitle());
+		
+		service.reserveInfo(hs, param);
 
 //			String[][] str = service.seat();
 //			for(int i=0; i<str.length; i++) {
@@ -69,14 +81,21 @@ public class Reserve_payController {
 	}
 
 	@RequestMapping(value ="/kakaoPay", method = RequestMethod.POST)
-	public String pay(ReserveVO param, Model model) {
+	public String pay(ReserveVO param, Model model, HttpSession hs) {
 		
-		ReserveVO p = new ReserveVO();
-		System.out.println("totalAmount:"+param.getTotalSeatAmount());
-		p.setMovieTitle("반도");
-		p.setTotalSeatAmount(param.getTotalSeatAmount());
+		ReserveVO reserveInfo =  (ReserveVO) hs.getAttribute("reserveInfo");
 		
-		model.addAttribute("data",p);
-		return "pay/kakaoPay";
+		
+		String jsp = "";
+		if(reserveInfo == null) {  //영화선택 안했다면 영화선택으로 다시가기, 내일 같이 해보기
+			jsp = "redirect:/reserve";
+		}
+		
+		jsp = "pay/kakaoPay";
+		
+		reserveInfo.setTotalSeatAmount(param.getTotalSeatAmount());
+		reserveInfo.setSelectedSeatNumbers(param.getSelectedSeatNumbers());
+		
+		return jsp;
 	}
 }

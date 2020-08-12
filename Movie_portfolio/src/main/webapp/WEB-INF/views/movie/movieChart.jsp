@@ -66,7 +66,7 @@
 			    <h5 class="card-title">${item.movieTitle }</h5>
 			    <p class="card-text">예매율:${item.movieRate }</p>
 			    <p class="card-text">개봉일:${item.openDate }</p>
-			    <a href="/reserve" class="btn btn-primary" target="_blank">예매하기</a>
+ 			    <a href="/reserve" class="btn btn-primary" target="_blank">예매하기</a>  
 			  </div>
 			</div>
 		</c:forEach>

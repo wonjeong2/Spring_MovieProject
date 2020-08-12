@@ -24,9 +24,8 @@
 			pg:'kakaopay', //결제경로
 			pay_method:'card', //결제 수단
 			merchant_uid:'merchant'+new Date().getTime(),  //결제시간
-			name:"영화예매",
-			movietitle:"${data.movieTitle}",
-			amount:"${data.totalSeatAmount}원"
+			name:"${reserveInfo.movieTitle}",
+			amount:"${reserveInfo.totalSeatAmount}원"
 		},function(rsp){
 			if(rsp.success){
 				

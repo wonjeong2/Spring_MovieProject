@@ -5,7 +5,7 @@ public class ReserveVO {
 	private String location;
 	private String date;
 	private int totalSeatAmount;
-	private String selectedSeat;
+	private String selectedSeatNumbers;
 	
 	public String getMovieTitle() {
 		return movieTitle;
@@ -31,12 +31,13 @@ public class ReserveVO {
 	public void setTotalSeatAmount(int totalSeatAmount) {
 		this.totalSeatAmount = totalSeatAmount;
 	}
-	public String getSelectedSeat() {
-		return selectedSeat;
+	public String getSelectedSeatNumbers() {
+		return selectedSeatNumbers;
 	}
-	public void setSelectedSeat(String selectedSeat) {
-		this.selectedSeat = selectedSeat;
+	public void setSelectedSeatNumbers(String selectedSeatNumbers) {
+		this.selectedSeatNumbers = selectedSeatNumbers;
 	}
+	
 	
 	
 	

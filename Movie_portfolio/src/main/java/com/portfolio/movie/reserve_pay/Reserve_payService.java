@@ -1,17 +1,13 @@
 package com.portfolio.movie.reserve_pay;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
+import javax.servlet.http.HttpSession;
 
-import com.portfolio.movie.info.InfoVO;
+import org.springframework.stereotype.Service;
 
 @Service
 public class Reserve_payService {
@@ -72,4 +68,10 @@ public class Reserve_payService {
 //		}
 //		return result;
 //	}
+
+	public void reserveInfo(HttpSession hs, ReserveVO param) { // 예약정보 담기
+		
+		hs.setAttribute("reserveInfo", param);
+	}
+
 }
