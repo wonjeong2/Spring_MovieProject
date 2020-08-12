@@ -1,6 +1,6 @@
 package com.portfolio.movie.reserve_pay;
 
-import java.util.ArrayList;	
+import java.util.ArrayList;		
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class Reserve_payController {
 	@RequestMapping(value = "/myReservePage", method = RequestMethod.GET)
 	public String myReservePage() {
 
-		return "reserve/myReserve";
+		return "member/myReserve";
 	}
 
 	@RequestMapping(value = "/reserve", method = RequestMethod.GET)

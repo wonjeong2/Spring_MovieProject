@@ -1,5 +1,7 @@
 package com.portfolio.movie.info;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,7 @@ public class InfoController {
 	
 	
 	@RequestMapping(value="/crawl", method = RequestMethod.GET)
-	public String getCrawling(Model model) {
+	public String getCrawling(Model model, HttpSession hs) {
 		model.addAttribute("list", service.crawl());
 		return "crawl";
 	}

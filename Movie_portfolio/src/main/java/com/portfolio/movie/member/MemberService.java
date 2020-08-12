@@ -1,6 +1,6 @@
 package com.portfolio.movie.member;
 
-import java.nio.charset.Charset;
+import java.nio.charset.Charset;	
 import java.util.Arrays;
 
 import javax.servlet.http.HttpSession;
@@ -45,16 +45,16 @@ public class MemberService {
 	public int login(MemberVO mvo,HttpSession hs) {
 		int result =0;
 		MemberVO db = mapper.login(mvo);
+		System.out.println("Ser_id:"+mvo.getCid());
+		System.out.println("Ser_pw:"+mvo.getCpw());
 		
 		if(db != null) {
 			String pw = mvo.getCpw();
 			String salt = db.getSalt();
 			String hashPw = MyUtils.hashPassword(pw, salt);
-			
-			db.setCpw(null);
-			hs.setAttribute("loginUser", db);
-			result = 1;
 			if(db.getCpw().equals(hashPw)) {
+				db.setCpw(null);
+				hs.setAttribute("loginUser", db);
 				result = 1;
 			}else {
 				result=3;
@@ -62,6 +62,7 @@ public class MemberService {
 		}else {
 			result=2;
 		}
+		System.out.println("result:"+result);
 		return result;
 	}
 	public int kakaoLogin(String code,HttpSession hs) {
@@ -163,7 +164,7 @@ public class MemberService {
 				uvo.setCpw("");
 				uvo.setPh("");
 				uvo.setSalt("");
-				uvo.setAddr("");
+				uvo.setEmail("");
 				
 				mapper.join(uvo);
 				

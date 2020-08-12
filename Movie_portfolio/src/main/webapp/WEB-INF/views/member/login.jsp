@@ -68,7 +68,14 @@ button {
 	padding: 5px 0 25px;
 }
 .forgot a{
+	
 	color: #c2fbfe;
+}
+#kakaoImg{
+	height:50px;
+}
+#kakaoImg a img{
+	width:161px;
 }
 </style>
 <body>
@@ -78,7 +85,7 @@ button {
 				<div class="col-12 user-img">
 					<img src="/resources/img/movie_login.png" >
 				</div>
-				<form class="col-12">
+				<form class="col-12" action="/member/loginPost" method="post">
 					<div class="form-group">
 						<input type="text" name="cid" class="form-control" placeholder="Enter Username">
 					</div>
@@ -87,6 +94,11 @@ button {
 					</div>
 					<button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
 				</form>
+				<div id="kakaoImg">
+					<a href="/member/loginKAKAO">
+						<img src="/resources/img/kakao.png">
+					</a>
+				</div>
 				<div class="col-12 forgot">
 					<a href="#">Forgot Password?</a>
 				</div>

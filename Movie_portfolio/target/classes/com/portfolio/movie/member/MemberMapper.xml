@@ -4,12 +4,14 @@
 	
 	<insert id="join" parameterType="com.portfolio.movie.member.MemberVO"
 		useGeneratedKeys="true" keyProperty="i_user">
-		INSERT INTO t_user
+		INSERT INTO movie_member
 		(cid, cpw,salt,ph,nm, email) 
 		VALUES
 		(#{cid},#{cpw},#{salt},#{ph},#{nm}, #{email})
 	</insert>
 	<select id="login" resultType="com.portfolio.movie.member.MemberVO" parameterType="com.portfolio.movie.member.MemberVO" >
-		SELECT i_user,cpw,salt,ph,nm FROM t_user WHERE cid =#{cid}
+		SELECT i_user,cid,cpw,salt,nm 
+		FROM movie_member 
+		WHERE cid = #{cid}
 	</select>
 </mapper>

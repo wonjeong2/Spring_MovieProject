@@ -7,7 +7,7 @@ public class MemberVO {
 	private String salt;
 	private String cpwConfirm;
 	private String nm;
-	private String addr;
+	private String email;
 	private String ph;
 	private String phAuthNumber;
 	
@@ -48,11 +48,11 @@ public class MemberVO {
 	public void setNm(String nm) {
 		this.nm = nm;
 	}
-	public String getAddr() {
-		return addr;
+	public String getEmail() {
+		return email;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPh() {
 		return ph;

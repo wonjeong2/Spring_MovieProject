@@ -2,7 +2,7 @@ package com.portfolio.movie.member;
 
 	
 
-import java.util.HashMap;
+import java.util.HashMap;	
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -28,24 +28,24 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET) //연결 브릿지 담당
 	public String login() {
-		return "user/login";
+		return "member/login";
 	}
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST) //연결 브릿지 담당
 	public String loginPost(MemberVO mvo, Model model, HttpSession hs) {
-		System.out.println("id:"+mvo.getCid());
-		System.out.println("pw:"+mvo.getCpw());
+		System.out.println("Con_id:"+mvo.getCid());
+		System.out.println("Con_pw:"+mvo.getCpw());
+		String msg="에러발생!";
 		int result = service.login(mvo, hs);
-		if(result ==1) {
+		
+		if(result ==1){
 			return "redirect:/crawl";
+		}else if(result ==2) {
+			msg="아이디가 존재하지 않습니다.";
 		}else if(result == 3) {
-			System.out.println("id가 존재하지 않습니다.");
-		}else if(result == 2) {
-			System.out.println("비밀번호가 틀립니다.");
-		}else {
-			System.out.println("오류 발생!");
+			msg="패스워드가 일치하지 않습니다.";
 		}
-		model.addAttribute("data",service.login(mvo,hs));
-		return "user/login";
+		model.addAttribute("msg",msg);
+		return "member/login";
 		
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.GET) //연결 브릿지 담당
@@ -53,19 +53,20 @@ public class MemberController {
 		if(err != null) {
 			model.addAttribute("msg", err);
 		}
-		return "user/join";
+		return "member/join";
 	}
 	@RequestMapping(value="/joinPost", method=RequestMethod.POST)
 	public String join(MemberVO mvo, HttpSession hs, RedirectAttributes ra) {
 		String rNumbers = (String)hs.getAttribute("rNumbers");
 		if(!rNumbers.equals(mvo.getPhAuthNumber())) {
 			ra.addAttribute("err", "인증번호가 맞지 않습니다.");
-			return "redirect:/user/join";
+			return "redirect:/member/join";
 		}
 		
 		int result = service.join(mvo);
-		return "redirect:/user/login";
+		return "redirect:/member/login";
 	}
+
 	
 	
 	@ResponseBody
@@ -85,32 +86,32 @@ public class MemberController {
 		return map;
 	}
 	//인증코드받기(start)-요청
-	@RequestMapping(value="/loginKAKAO", method=RequestMethod.GET)
-	public String loginKAKAO() {
-		String uri = String.format("redirect:https://kauth.kakao.com/oauth/authorize?"
-				+ "client_id=%s&redirect_uri=%s&response_type=code"
-				, Const.KAKAO_CLIENT_ID, Const.KAKAO_AUTH_REDIRECT_URI);
-		return uri;
-	}
-	
-	@RequestMapping(value="/joinKAKAO", method=RequestMethod.GET)
-	//인증코드받기-응답
-	public String joinKAKAO(@RequestParam(required=false) String code,
-			@RequestParam(required=false) String error, HttpSession hs) {
-		//인증코드가 담겨 온다.
-		System.out.println("code : " + code);
-		System.out.println("error : " + error);
-		
-		if(code == null) {			
-			return "redirect:/user/login";
+		@RequestMapping(value="/loginKAKAO", method=RequestMethod.GET)
+		public String loginKAKAO() {
+			String uri = String.format("redirect:https://kauth.kakao.com/oauth/authorize?"
+					+ "client_id=%s&redirect_uri=%s&response_type=code"
+					, Const.KAKAO_CLIENT_ID, Const.KAKAO_AUTH_REDIRECT_URI);
+			return uri;
 		}
-		int result = service.kakaoLogin(code,hs);
 		
-		return "redirect:/board/list";
-	}
+		@RequestMapping(value="/joinKAKAO", method=RequestMethod.GET)
+		//인증코드받기-응답
+		public String joinKAKAO(@RequestParam(required=false) String code,
+				@RequestParam(required=false) String error, HttpSession hs) {
+			//인증코드가 담겨 온다.
+			System.out.println("code : " + code);
+			System.out.println("error : " + error);
+			
+			if(code == null) {			
+				return "redirect:/user/login";
+			}
+			int result = service.kakaoLogin(code,hs);
+			
+			return "redirect:/crawl";
+		}
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession hs) {
 		hs.invalidate();
-		return "redirect:/user/login";
+		return "redirect:/member/login";
 	}
 }
