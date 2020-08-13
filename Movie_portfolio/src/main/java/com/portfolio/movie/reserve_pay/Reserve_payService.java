@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Reserve_payService {
-	@Autowired
-	private Reserve_payMapper mapper;
 	
 	public List<DateVO> date() {
 
