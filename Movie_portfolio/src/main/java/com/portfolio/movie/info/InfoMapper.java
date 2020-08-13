@@ -1,7 +1,8 @@
 package com.portfolio.movie.info;
 
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface InfoMapper {
-	public void setCrawl(List<InfoVO> vo);
+	public void setCrawl(InfoVO param);
 }

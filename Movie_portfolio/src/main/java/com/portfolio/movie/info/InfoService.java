@@ -55,7 +55,16 @@ public class InfoService {
 		return list;
 	}
 	public void setCrawl(List<InfoVO> vo) {
-		mapper.setCrawl(vo);
+		
+		for(int i=0; i<vo.size(); i++) {
+			InfoVO param = new InfoVO();
+			param.setMovieTitle(vo.get(i).getMovieTitle());
+			param.setMovieAge(vo.get(i).getMovieAge());
+			param.setOpenDate(vo.get(i).getOpenDate());
+			
+			mapper.setCrawl(param);
+		}
+		
 	}
 
 }

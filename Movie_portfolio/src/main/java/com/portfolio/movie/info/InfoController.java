@@ -20,9 +20,12 @@ public class InfoController {
 	
 	@RequestMapping(value="/crawl", method = RequestMethod.GET)
 	public String getCrawling(InfoVO ivo,Model model, HttpSession hs) {
-		service.setCrawl(service.crawl());
 		model.addAttribute("list", service.crawl());
 		return "crawl";
+	}
+	@RequestMapping(value="/manage", method = RequestMethod.GET)
+	public void getCrawlMovie(InfoVO ivo) {
+		service.setCrawl(service.crawl());
 	}
 	
 	@RequestMapping(value="/movieChart", method=RequestMethod.GET)
