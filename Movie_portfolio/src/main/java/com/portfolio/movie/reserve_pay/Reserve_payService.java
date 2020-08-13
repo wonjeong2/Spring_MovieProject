@@ -7,11 +7,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Reserve_payService {
-
+	@Autowired
+	private Reserve_payMapper mapper;
+	
 	public List<DateVO> date() {
 
 		List<DateVO> list = new ArrayList<DateVO>();

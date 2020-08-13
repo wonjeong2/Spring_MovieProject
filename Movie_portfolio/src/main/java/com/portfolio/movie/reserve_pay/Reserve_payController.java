@@ -83,7 +83,7 @@ public class Reserve_payController {
 	@RequestMapping(value ="/kakaoPay", method = RequestMethod.POST)
 	public String pay(ReserveVO param, Model model, HttpSession hs) {
 		
-		ReserveVO reserveInfo =  (ReserveVO) hs.getAttribute("reserveInfo");
+		Reserve_payVO reserveInfo =  (Reserve_payVO) hs.getAttribute("reserveInfo");
 		
 		
 		String jsp = "";
@@ -93,8 +93,8 @@ public class Reserve_payController {
 		
 		jsp = "pay/kakaoPay";
 		
-		reserveInfo.setTotalSeatAmount(param.getTotalSeatAmount());
-		reserveInfo.setSelectedSeatNumbers(param.getSelectedSeatNumbers());
+		reserveInfo.setPayMoney(param.getTotalSeatAmount());
+		reserveInfo.setSelectSeat(param.getSelectedSeat());
 		
 		return jsp;
 	}

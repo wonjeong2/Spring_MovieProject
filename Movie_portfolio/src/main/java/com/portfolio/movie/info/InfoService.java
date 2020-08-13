@@ -7,11 +7,15 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class InfoService {
+	@Autowired
+	private InfoMapper mapper;
+	
 	
 	public List<InfoVO> crawl() {
 		Document doc;
@@ -49,6 +53,9 @@ public class InfoService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public List<InfoVO> setCrawl(InfoVO ivo) {
+		return mapper.setCrawl(ivo);
 	}
 
 }

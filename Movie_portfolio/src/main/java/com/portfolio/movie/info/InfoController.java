@@ -19,7 +19,8 @@ public class InfoController {
 	
 	
 	@RequestMapping(value="/crawl", method = RequestMethod.GET)
-	public String getCrawling(Model model, HttpSession hs) {
+	public String getCrawling(InfoVO ivo,Model model, HttpSession hs) {
+		service.setCrawl(ivo);
 		model.addAttribute("list", service.crawl());
 		return "crawl";
 	}

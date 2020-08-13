@@ -7,7 +7,6 @@ public class InfoVO {
 	private String movieTitle;
 	private String movieRate;
 	private String openDate;
-	private String like;
 	
 	
 	public String getRank() {
@@ -40,12 +39,6 @@ public class InfoVO {
 	public void setOpenDate(String openDate) {
 		this.openDate = openDate;
 	}
-	public String getLike() {
-		return like;
-	}
-	public void setLike(String like) {
-		this.like = like;
-	}
 	public String getMovieTitle() {
 		return movieTitle;
 	}
@@ -66,7 +59,7 @@ public class InfoVO {
 	@Override
 	public String toString() {
 		return "CGVInfoDto [rank=" + rank + ", img=" + img + ", movieAge=" + movieAge + ", movieTitle=" + movieTitle
-				+ ", movieRate=" + movieRate + ", movieOpenDate=" + openDate + ", like=" + like 
+				+ ", movieRate=" + movieRate + ", movieOpenDate=" + openDate 
 				+ "]";
 	}
 	
