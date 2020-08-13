@@ -5,4 +5,7 @@
 		INSERT INTO movie_info(movieTitle,openDate,movieAge)
 		VALUES(#{movieTitle},#{openDate},#{movieAge})
 	</insert>
+	<delete id="delCrawl">
+		DELETE FROM movie_info
+	</delete>
 </mapper>
