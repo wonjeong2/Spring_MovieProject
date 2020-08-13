@@ -55,6 +55,7 @@ public class InfoService {
 		return list;
 	}
 	public List<InfoVO> setCrawl(InfoVO ivo) {
+		
 		return mapper.setCrawl(ivo);
 	}
 
