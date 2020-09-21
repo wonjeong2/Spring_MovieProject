@@ -2,10 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.portfolio.movie.info.InfoMapper">
 	<insert id="setCrawl" parameterType="com.portfolio.movie.info.InfoVO">
-		INSERT INTO movie_info(movieTitle,openDate,movieAge)
-		VALUES(#{movieTitle},#{openDate},#{movieAge})
+		INSERT INTO movie_info(movieTitle,img,movieRate,openDate,movieAge)
+		VALUES(#{movieTitle},#{img},#{movieRate},#{openDate},#{movieAge})
 	</insert>
 	<delete id="delCrawl">
 		DELETE FROM movie_info
 	</delete>
+	<select id="listCrawl" resultType="com.portfolio.movie.info.InfoVO">
+		SELECT * FROM movie_info;
+	</select>
 </mapper>
