@@ -54,17 +54,19 @@ public class InfoService {
 		}
 		return list;
 	}
-	public void setCrawl(List<InfoVO> vo) {
+	public List<InfoVO> setCrawl(List<InfoVO> lvo) {
 		mapper.delCrawl();
-		for(int i=0; i<vo.size(); i++) {
+		for(int i=0; i<lvo.size(); i++) {
 			InfoVO param = new InfoVO();
-			param.setMovieTitle(vo.get(i).getMovieTitle());
-			param.setMovieAge(vo.get(i).getMovieAge());
-			param.setOpenDate(vo.get(i).getOpenDate());
-			param.setMovieRate(vo.get(i).getMovieRate());
+			param.setMovieTitle(lvo.get(i).getMovieTitle());
+			param.setImg(lvo.get(i).getImg());
+			param.setMovieAge(lvo.get(i).getMovieAge());
+			param.setOpenDate(lvo.get(i).getOpenDate());
+			param.setMovieRate(lvo.get(i).getMovieRate());
 			
 			mapper.setCrawl(param);
-		}	
+		}
+		return mapper.listCrawl();
 	}
 	public void movieDetail(String movieTitle) {
 	}

@@ -25,7 +25,7 @@
             </div>
             <div class="user singupBx">
                 <div class="formBx">
-                    <form action="/member/signUpPost" id="frm">
+                    <form action="/member/signUpPost" method="post" id="frm">
                         <h2>Sign Up</h2>
                         <div><input type="hidden" id="checkId" value="2"></div>
                         <input type="text" name="cid" placeholder="UserID">

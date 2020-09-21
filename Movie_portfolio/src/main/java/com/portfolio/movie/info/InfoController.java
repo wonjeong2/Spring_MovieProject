@@ -23,7 +23,7 @@ public class InfoController {
 	}
 	@RequestMapping(value="/movieList", method=RequestMethod.GET)
 	public String movieChart(Model model) {
-		model.addAttribute("list",service.crawl());
+		model.addAttribute("list",service.setCrawl(service.crawl()));
 		return "movie/movieList";
 	}
 	@RequestMapping(value="/movieDetail", method=RequestMethod.GET)
