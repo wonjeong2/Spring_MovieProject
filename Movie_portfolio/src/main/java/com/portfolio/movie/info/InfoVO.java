@@ -58,7 +58,7 @@ public class InfoVO {
 	}
 	@Override
 	public String toString() {
-		return "CGVInfoDto [rank=" + rank + ", img=" + img + ", movieAge=" + movieAge + ", movieTitle=" + movieTitle
+		return "MovieInfoDto [rank=" + rank + ", img=" + img + ", movieAge=" + movieAge + ", movieTitle=" + movieTitle
 				+ ", movieRate=" + movieRate + ", movieOpenDate=" + openDate 
 				+ "]";
 	}

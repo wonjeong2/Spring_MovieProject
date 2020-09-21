@@ -162,7 +162,6 @@ public class MemberService {
 			if(dbResult == null) {
 				uvo.setNm(kui2.getProperties().getNickname());
 				uvo.setCpw("");
-				uvo.setPh("");
 				uvo.setSalt("");
 				uvo.setEmail("");
 				

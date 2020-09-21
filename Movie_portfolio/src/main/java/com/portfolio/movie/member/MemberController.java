@@ -26,11 +26,11 @@ public class MemberController {
 	private MemberService service;
 	
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET) //연결 브릿지 담당
+	@RequestMapping(value = "/signIn", method = RequestMethod.GET) //연결 브릿지 담당
 	public String login() {
-		return "member/login";
+		return "member/signIn";
 	}
-	@RequestMapping(value = "/loginPost", method = RequestMethod.POST) //연결 브릿지 담당
+	@RequestMapping(value = "/signInPost", method = RequestMethod.POST) //연결 브릿지 담당
 	public String loginPost(MemberVO mvo, Model model, HttpSession hs) {
 		System.out.println("Con_id:"+mvo.getCid());
 		System.out.println("Con_pw:"+mvo.getCpw());
@@ -38,53 +38,45 @@ public class MemberController {
 		int result = service.login(mvo, hs);
 		
 		if(result ==1){
-			return "redirect:/crawl";
+			return "redirect:/main";
 		}else if(result ==2) {
 			msg="아이디가 존재하지 않습니다.";
 		}else if(result == 3) {
 			msg="패스워드가 일치하지 않습니다.";
 		}
 		model.addAttribute("msg",msg);
-		return "member/login";
+		return "member/signIn";
 		
 	}
-	@RequestMapping(value = "/join", method = RequestMethod.GET) //연결 브릿지 담당
-	public String join(Model model, @RequestParam(value="err",required=false)String err) {
-		if(err != null) {
-			model.addAttribute("msg", err);
-		}
-		return "member/join";
-	}
-	@RequestMapping(value="/joinPost", method=RequestMethod.POST)
+	@RequestMapping(value="/signUpPost", method=RequestMethod.POST)
 	public String join(MemberVO mvo, HttpSession hs, RedirectAttributes ra) {
-		String rNumbers = (String)hs.getAttribute("rNumbers");
-		if(!rNumbers.equals(mvo.getPhAuthNumber())) {
-			ra.addAttribute("err", "인증번호가 맞지 않습니다.");
-			return "redirect:/member/join";
-		}
+//		String rNumbers = (String)hs.getAttribute("rNumbers");
+//		if(!rNumbers.equals(mvo.getPhAuthNumber())) {
+//			ra.addAttribute("err", "인증번호가 맞지 않습니다.");
+//		}
 		
 		int result = service.join(mvo);
-		return "redirect:/member/login";
+		return "redirect:/member/signIn";
 	}
 
 	
 	
-	@ResponseBody
-	@RequestMapping(value="/phAuth", method=RequestMethod.GET)
-	public Map<String, Object> phAuth(@RequestParam String ph, HttpSession hs) {
-		System.out.println("ph : " + ph);	
-		int len =  6; //인증번호길이
-		String rNumbers = MyUtils.makeRandomNumber(len);
-		System.out.println("rNumbers: " + rNumbers);
-		//ph번호로 인증번호를 문자로 보낸다.
-		
-		hs.setAttribute("rNumbers", rNumbers);
-		
-		Map<String, Object> map = new HashMap();
-		map.put("result", 1); //json형태로 출력
-		
-		return map;
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/phAuth", method=RequestMethod.GET)
+//	public Map<String, Object> phAuth(@RequestParam String ph, HttpSession hs) {
+//		System.out.println("ph : " + ph);	
+//		int len =  6; //인증번호길이
+//		String rNumbers = MyUtils.makeRandomNumber(len);
+//		System.out.println("rNumbers: " + rNumbers);
+//		//ph번호로 인증번호를 문자로 보낸다.
+//		
+//		hs.setAttribute("rNumbers", rNumbers);
+//		
+//		Map<String, Object> map = new HashMap();
+//		map.put("result", 1); //json형태로 출력
+//		
+//		return map;
+//	}
 	//인증코드받기(start)-요청
 		@RequestMapping(value="/loginKAKAO", method=RequestMethod.GET)
 		public String loginKAKAO() {
@@ -103,15 +95,15 @@ public class MemberController {
 			System.out.println("error : " + error);
 			
 			if(code == null) {			
-				return "redirect:/user/login";
+				return "redirect:/user/signIn";
 			}
 			int result = service.kakaoLogin(code,hs);
 			
-			return "redirect:/crawl";
+			return "redirect:/main";
 		}
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession hs) {
 		hs.invalidate();
-		return "redirect:/member/login";
+		return "redirect:/member/signIn";
 	}
 }

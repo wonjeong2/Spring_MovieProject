@@ -61,9 +61,12 @@ public class InfoService {
 			param.setMovieTitle(vo.get(i).getMovieTitle());
 			param.setMovieAge(vo.get(i).getMovieAge());
 			param.setOpenDate(vo.get(i).getOpenDate());
+			param.setMovieRate(vo.get(i).getMovieRate());
 			
 			mapper.setCrawl(param);
 		}	
+	}
+	public void movieDetail(String movieTitle) {
 	}
 
 }
