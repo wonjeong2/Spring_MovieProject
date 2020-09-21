@@ -59,7 +59,14 @@ public class MemberController {
 		return "redirect:/member/signIn";
 	}
 
-	
+	 @ResponseBody 
+	 @RequestMapping(value="/chkId", method = RequestMethod.GET) 
+	 public Map<String, Object> idChk(@RequestParam("cid")String cid, Model model){
+		Map<String, Object> map = new HashMap();
+		map.put("result", service.chkId(cid));
+		 return map;
+		 
+	 }
 	
 //	@ResponseBody
 //	@RequestMapping(value="/phAuth", method=RequestMethod.GET)

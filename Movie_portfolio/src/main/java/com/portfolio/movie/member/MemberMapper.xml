@@ -14,4 +14,8 @@
 		FROM movie_member 
 		WHERE cid = #{cid}
 	</select>
+	<select id="chkId" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM movie_member
+		WHERE cid = #{cid}	
+	</select>
 </mapper>

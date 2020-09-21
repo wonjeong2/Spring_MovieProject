@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/signIn.css">
 <script src="/resources/js/signIn.js"></script>
+<script src="/resources/axios_js/axios.min.js"></script>
 <title>Login</title>
 </head>
 <body>
@@ -15,8 +16,8 @@
                 <div class="formBx">
                     <form action="/member/signInPost" method="post">
                         <h2>Sign In</h2>
-                        <input type="text" name="" placeholder="UserID">
-                        <input type="password" name="" placeholder="UserPassword">
+                        <input type="text" name="cid" placeholder="UserID">
+                        <input type="password" name="cpw" placeholder="UserPassword">
                         <div><input type="submit" value="Login"><span><a href="/member/loginKAKAO"><img src="/resources/img/kakao.png"></a></span></div>
                         <p class="signup">Dont't have an account ? <a href="#" onclick="toggleForm();">Sign Up</a></p>
                     </form>
@@ -24,15 +25,16 @@
             </div>
             <div class="user singupBx">
                 <div class="formBx">
-                    <form action="/member/signUpPost">
+                    <form action="/member/signUpPost" id="frm">
                         <h2>Sign Up</h2>
-                        <input type="text" name="" placeholder="UserID">
-                        <input type="button" value="Check"><span></span>
-                        <input type="password" name="" placeholder="UserPassword">
-                        <input type="password" name="" placeholder="UserConfirmPassword">
-                        <input type="text" name="" placeholder="UserName">
-                        <input type="email" name="" placeholder="UserEmail">
-                        <input type="submit" value="Join">
+                        <div><input type="hidden" id="checkId" value="2"></div>
+                        <input type="text" name="cid" placeholder="UserID">
+                        <input type="button" value="Check" onclick="return chkId()"><span></span><span id="duplicationIdMsg" style="color:red;"></span>
+                        <input type="password" name="cpw" placeholder="UserPassword">
+                        <input type="password" name="cpwConfirm" placeholder="UserConfirmPassword">
+                        <input type="text" name="nm" placeholder="UserName">
+                        <input type="email" name="email" placeholder="UserEmail">
+                        <input type="submit" value="Join" onclick="return chk()">
                         <p class="signup">Already have an account ? <a href="#" onclick="toggleForm();">Sign In</a></p>
                     </form>
                 </div>

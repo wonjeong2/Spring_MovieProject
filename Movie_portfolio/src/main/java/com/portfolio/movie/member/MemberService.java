@@ -175,4 +175,7 @@ public class MemberService {
 			
 			return result;
 	}
+	public int chkId(String cid) {
+		return mapper.chkId(cid);
+	}
 }

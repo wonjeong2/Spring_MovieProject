@@ -6,54 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<link rel="stylesheet"  href="/resources/common_css2/style.css">
-<script src="/resources/common_js/common_js.js"></script>
+<link rel="stylesheet"  href="/resources/css/movieList.js">
 <script src="/resources/axios_js/axios.min.js"></script>
 <title>MovieChart</title>
 </head>
 <body>
-<!-- nav영역 -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		 <a class="navbar-brand" href="/index">Movie</a>
-			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			    <span class="navbar-toggler-icon"></span>
-			  </button>
-		
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="/crawl">Home <span class="sr-only">(current)</span></a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="/movieChart">MovieChart</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="/reserve">Reserve</a>
-		      </li>
-		     </ul>
-		   	 <ul class="nav navbar-nav navbar-right">
-	      		<li class="dropdown">
-	        		<a class="nav-link dropdown-toggle" href="#" id="dropdown-togle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-	          		MemberShip<span class="caret"></span>
-	        		</a>
-	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-	         	<li class="dropdown-item">
-	         		<c:if test="${loginUser.cid eq null }"><a href="/member/login" style="text-decoration:none ; color:black;">Login</a></c:if>
-	         		<c:if test="${loginUser.cid ne null }"><a href="/member/logout" style="text-decoration:none ; color:black;">Logout</a></c:if>
-	         	<li>
-	          	<li class="dropdown-item">
-	          		<c:if test="${loginUser.cid eq null }"><a href="/member/join" style="text-decoration:none; color:black;">Join</a></c:if>
-	         		<c:if test="${loginUser.cid ne null }"><a href="/member/myReserve" style="text-decoration:none; color:black;">My Reserve</a></c:if>
-	          	<li>
-	          </ul>
-	      	</li>
-	    	</ul>
-	 	<form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Movie Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	    </form>
-	  </div>
-	</nav>
+
 
 
 <!-- section 부분 -->
