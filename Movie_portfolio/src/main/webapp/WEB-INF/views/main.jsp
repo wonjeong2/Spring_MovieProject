@@ -20,28 +20,27 @@
                 <li><a href="/movieList">Movie</a></li>
                 <c:if test="${loginUser.i_user eq null}">
                 	<li><a href="/member/signIn">Sign In</a></li>
+                </c:if>
+                <c:if test="${loginUser.i_user ne null}">
+                	<li><a href="/member/logout">Logout</a></li>
                 </c:if>	
             </ul>
         </header>
         <div class="content">
             <div class="textBox">
-                <h2>That's What<br><span>I like</span></h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.</p>
-                <a href="#">View All Movies</a>    
+                <h2>That's Movie<br><span>I like</span></h2>
+                <p>Hello Everyone!</p>
+                <p>Always check the Star rating of the latest movies.</p>
+                <p>And rate the movie yourself</p>
+                <a href="/movieList">View All Movies</a>    
             </div>
             <div class="imgBox">
-                <img src="/resources/img/red.jpg" class="whiteBox">
+                <img src="/resources/img/red.png" class="whiteBox">
             </div>
         </div>
         <ul class="thumb">
-            <li><img src="/resources/img/red.jpg" onclick="imgSlider('/resources/img/red.jpg');changeBgColor('#ef4136')"></li>
-            <li><img src="/resources/img/white.jpg" onclick="imgSlider('/resources/img/white.jpg');changeBgColor('#fff')"></li>
+            <li><img src="/resources/img/red.png" onclick="imgSlider('/resources/img/red.png');changeBgColor('#ef4136')"></li>
+            <li><img src="/resources/img/white.png" onclick="imgSlider('/resources/img/white.png');changeBgColor('#fff')"></li>
         </ul>
     </section>
 

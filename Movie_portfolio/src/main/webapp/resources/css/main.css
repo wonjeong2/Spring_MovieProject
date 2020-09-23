@@ -44,6 +44,7 @@ header ul li a{
     font-weight: 400;
     margin-left: 40px;
     text-decoration: none;
+    text-transform: uppercase;
 }
 .content{
     position: relative;

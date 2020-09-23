@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+body{
+    font-family: 'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    height:100%;
+    display: flex;
+	justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.menu{
+	margin-left:300px;
+	width:60%;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+.menu a{
+	padding:8px;
+	color: #03e9f4;
+    font-size: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+}
+.menu a:hover{
+	background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+}
+.card{
+    background:#fff;
+    width: 400px;
+    height: 450px;
+    margin: 0 auto;
+}
+.card .content{
+	text-align:center;
+    width: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.card .content a{
+    display: inline-block;
+    margin: 10px 0 0;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid #262626;
+    color: #262626;
+    font-weight: 600;
+}
+.card .content div{
+	font-weight:bold;
+}
+.card .content .group-one span{
+	margin-left:10px;
+}
+.card .content .group-three span{
+	color:#f05522;
+}
+.card .sliderText{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+.card .sliderText img{
+    width:100%;
+    height:100%;
+}
+.swiper-container .swiper-wrapper .swiper-slide{
+    width: 400px;
+}
