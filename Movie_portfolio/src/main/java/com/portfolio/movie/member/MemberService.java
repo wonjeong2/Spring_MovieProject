@@ -27,6 +27,7 @@ import com.portfolio.movie.common.MyUtils;
 
 @Service
 public class MemberService {
+	
 	@Autowired
 	private MemberMapper mapper;
 	

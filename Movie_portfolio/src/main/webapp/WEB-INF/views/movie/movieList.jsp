@@ -39,7 +39,7 @@
                         		<i class="fa fa-star"></i>
                         	</span>
                         </div>
-                        <a href="/movieDetail?movieTitle="${item.movieTitle}>View</a>
+                        <a href="/movieDetail?movieTitle=${item.movieTitle}">View</a>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ public class MovieCmtVO {
 	private String movieTitle;
 	private int i_user;
 	private String r_dt;
+	
 	public int getI_comment() {
 		return i_comment;
 	}

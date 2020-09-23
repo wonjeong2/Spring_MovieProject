@@ -56,6 +56,7 @@ public class InfoVO {
 		this.movieRate = movieRate;
 		this.openDate = openDate;
 	}
+	
 	@Override
 	public String toString() {
 		return "MovieInfoDto [rank=" + rank + ", img=" + img + ", movieAge=" + movieAge + ", movieTitle=" + movieTitle

@@ -8,7 +8,14 @@
 	<delete id="delCrawl">
 		DELETE FROM movie_info
 	</delete>
+	
 	<select id="listCrawl" resultType="com.portfolio.movie.info.InfoVO">
 		SELECT * FROM movie_info;
+	</select>
+	
+	<select id="selectMovie" resultType="com.portfolio.movie.info.InfoVO" parameterType="String">
+		SELECT movieTitle, openDate, movieAge, img, movieRate 
+		FROM movie_info
+		WHERE movieTitle = #{movieTitle};
 	</select>
 </mapper>

@@ -9,4 +9,5 @@ public interface InfoMapper {
 	public List<InfoVO> listCrawl();
 	public void setCrawl(InfoVO param);
 	public void delCrawl();
+	public InfoVO selectMovie(String movieTitle);
 }

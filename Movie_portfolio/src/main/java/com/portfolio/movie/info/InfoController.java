@@ -20,13 +20,24 @@ public class InfoController {
 	public String getCrawling() {		
 		return "main";
 	}
+	
 	@RequestMapping(value="/movieList", method=RequestMethod.GET)
 	public String movieChart(Model model) {
 		model.addAttribute("list",service.setCrawl(service.crawl()));
 		return "movie/movieList";
 	}
+	
 	@RequestMapping(value="/movieDetail", method=RequestMethod.GET)
 	public String movieDetail(Model model,String movieTitle) {
+		
+		model.addAttribute("movie", service.selectMovie(movieTitle));	
 		return "movie/movieDetail";
 	}
+	
+//	@RequestMapping(value="/movieDetail", method=RequestMethod.POST)
+//	public String movieDetailPost(Model model, MovieCmtVO vo, String movieTitle) {
+//		
+//		model.addAttribute("movie", service.selectMovie(movieTitle));
+//		return "movie/movieDetail";
+//	}
 }

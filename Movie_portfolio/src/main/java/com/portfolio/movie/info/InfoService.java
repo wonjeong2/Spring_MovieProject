@@ -68,7 +68,12 @@ public class InfoService {
 		}
 		return mapper.listCrawl();
 	}
-	public void movieDetail(String movieTitle) {
+	
+	public InfoVO selectMovie(String movieTitle) {
+		
+		InfoVO param = mapper.selectMovie(movieTitle);
+		
+		return param;
 	}
 
 }
