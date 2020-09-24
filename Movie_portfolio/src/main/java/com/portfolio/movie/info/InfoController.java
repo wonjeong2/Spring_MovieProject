@@ -31,7 +31,7 @@ public class InfoController {
 	public String movieDetail(Model model,String movieTitle) {
 		
 		model.addAttribute("movie", service.selectMovie(movieTitle));	
-		return "movie/movieDetail";
+		return "movie/movieDetail2";
 	}
 	
 //	@RequestMapping(value="/movieDetail", method=RequestMethod.POST)
