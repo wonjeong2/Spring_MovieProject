@@ -8,6 +8,14 @@ public class InfoVO {
 	private String movieRate;
 	private String openDate;
 	
+	private int star;
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
+	
 	
 	public String getRank() {
 		return rank;
@@ -63,5 +71,6 @@ public class InfoVO {
 				+ ", movieRate=" + movieRate + ", movieOpenDate=" + openDate 
 				+ "]";
 	}
+
 	
 }

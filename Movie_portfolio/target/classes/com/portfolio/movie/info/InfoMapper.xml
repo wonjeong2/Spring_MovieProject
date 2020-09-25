@@ -14,7 +14,8 @@
 	</select>
 	
 	<select id="selectMovie" resultType="com.portfolio.movie.info.InfoVO" parameterType="String">
-		SELECT movieTitle, openDate, movieAge, img, movieRate 
+		SELECT movieTitle, openDate, movieAge, img, movieRate,
+			(SELECT AVG(star) FROM movie_cmt WHERE movieTitle=#{movieTitle}) star
 		FROM movie_info
 		WHERE movieTitle = #{movieTitle};
 	</select>

@@ -34,11 +34,6 @@
                     	<h3>${item.movieTitle}</h3>
                         <div class="group-one">${item.openDate }<span>예매율:${item.movieRate }</span></div>
                         <div class="group-two">${item.movieAge }</div>
-                        <div class="group-three">
-                        	<span>
-                        		<i class="fa fa-star"></i>
-                        	</span>
-                        </div>
                         <a href="/movieDetail?movieTitle=${item.movieTitle}">View</a>
                     </div>
                 </div>
