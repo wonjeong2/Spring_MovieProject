@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.portfolio.movie.member.MemberVO;
 
 
 @Service
@@ -74,6 +78,12 @@ public class InfoService {
 		InfoVO param = mapper.selectMovie(movieTitle);
 		
 		return param;
+	}
+	public int insertCmt(MovieCmtVO mcvo,HttpSession hs) {
+		MemberVO loginUser = (MemberVO)hs.getAttribute("loginUser");
+		mcvo.setCid(loginUser.getCid());
+		mcvo.setI_user(loginUser.getI_user());
+		return mapper.insertCmt(mcvo);
 	}
 
 }

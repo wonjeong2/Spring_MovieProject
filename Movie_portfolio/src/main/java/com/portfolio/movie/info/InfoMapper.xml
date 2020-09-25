@@ -19,4 +19,14 @@
 		FROM movie_info
 		WHERE movieTitle = #{movieTitle};
 	</select>
+	<insert id="insertCmt" parameterType="com.portfolio.movie.info.MovieCmtVO"
+		useGeneratedKeys="true" keyProperty="i_comment">
+		INSERT INTO movie_cmt(cid,star,ctnt,movieTitle,i_user) 
+		VALUES(#{cid},#{star},#{ctnt},#{movieTitle},#{i_user})
+	</insert>
+	<select id="selectCmt" parameterType="String" resultType="com.portfolio.movie.info.MovieCmtVO">
+		SELECT cid,star,ctnt 
+		FROM movie_cmt 
+		WHERE movieTitle=#{movieTitle}
+	</select>
 </mapper>

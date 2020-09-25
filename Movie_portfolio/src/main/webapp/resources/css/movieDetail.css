@@ -10,7 +10,6 @@ body,html{
 }
 .wrap{
 	margin-top:5%;
-	background:gray;
 	width:100%;
 	height:100%;
 	display:flex;
@@ -23,5 +22,11 @@ body,html{
 	height:300px;
 }
 .movie_form img{
+	width:300px;
+}
+.make_star{
+	display:flex;
+	flex-direction:column;
+	max-width:70%;
 	width:300px;
 }

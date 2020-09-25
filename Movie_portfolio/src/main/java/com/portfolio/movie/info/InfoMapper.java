@@ -10,4 +10,5 @@ public interface InfoMapper {
 	public void setCrawl(InfoVO param);
 	public void delCrawl();
 	public InfoVO selectMovie(String movieTitle);
+	public int insertCmt(MovieCmtVO mcvo);
 }
