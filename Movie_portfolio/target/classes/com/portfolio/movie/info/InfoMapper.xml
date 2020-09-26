@@ -15,7 +15,7 @@
 	
 	<select id="selectMovie" resultType="com.portfolio.movie.info.InfoVO" parameterType="String">
 		SELECT movieTitle, openDate, movieAge, img, movieRate,
-			(SELECT AVG(star) FROM movie_cmt WHERE movieTitle=#{movieTitle}) star
+			(SELECT TRUNCATE(AVG(star),1) FROM movie_cmt WHERE movieTitle=#{movieTitle}) star
 		FROM movie_info
 		WHERE movieTitle = #{movieTitle};
 	</select>
@@ -24,9 +24,10 @@
 		INSERT INTO movie_cmt(cid,star,ctnt,movieTitle,i_user) 
 		VALUES(#{cid},#{star},#{ctnt},#{movieTitle},#{i_user})
 	</insert>
-	<select id="selectCmt" parameterType="String" resultType="com.portfolio.movie.info.MovieCmtVO">
+	<select id="cmtList" parameterType="String" resultType="com.portfolio.movie.info.MovieCmtVO">
 		SELECT cid,star,ctnt 
 		FROM movie_cmt 
 		WHERE movieTitle=#{movieTitle}
+		ORDER BY i_comment DESC
 	</select>
 </mapper>

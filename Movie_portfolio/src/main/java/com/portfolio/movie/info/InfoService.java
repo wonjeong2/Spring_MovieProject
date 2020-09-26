@@ -85,5 +85,7 @@ public class InfoService {
 		mcvo.setI_user(loginUser.getI_user());
 		return mapper.insertCmt(mcvo);
 	}
-
+	public List<MovieCmtVO> cmtList(String movieTitle){
+		return mapper.cmtList(movieTitle);
+	}
 }

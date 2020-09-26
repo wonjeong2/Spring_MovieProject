@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.portfolio.movie.member.MemberVO;
 
@@ -32,19 +34,20 @@ public class InfoController {
 	}
 	
 	@RequestMapping(value="/movieDetail", method=RequestMethod.GET)
-	public String movieDetail(Model model,String movieTitle) {
+	public String movieDetail(Model model,@RequestParam("movieTitle") String movieTitle) {
 		System.out.println("detailMovieTitle:"+movieTitle);
-		model.addAttribute("movie", service.selectMovie(movieTitle));	
+		model.addAttribute("movie", service.selectMovie(movieTitle));
+		model.addAttribute("cmtList",service.cmtList(movieTitle));
 		return "movie/movieDetail";
 	}
-	//리다이렉트 쿼리스트링이 불가 axios로 비동기형식으로 db저장 리스트 뿌리기해야할듯
 	@RequestMapping(value="/movieCmt",method=RequestMethod.POST)
-	public String movieCmt(MovieCmtVO mcvo,HttpSession hs) {
+	public String movieCmt(MovieCmtVO mcvo,HttpSession hs,RedirectAttributes redirectAttributes) {
 		MemberVO loginUser = (MemberVO)hs.getAttribute("loginUser");
 		if(loginUser == null) {
 			return "/member/signIn";
 		}
 		service.insertCmt(mcvo,hs);
-		return "redirect:/movieDetail?movieTitle="+mcvo.getMovieTitle();
+		redirectAttributes.addAttribute("movieTitle", mcvo.getMovieTitle());
+		return "redirect:/movieDetail";
 	}
 }

@@ -8,11 +8,11 @@ public class InfoVO {
 	private String movieRate;
 	private String openDate;
 	
-	private int star;
-	public int getStar() {
+	private double star;
+	public double getStar() {
 		return star;
 	}
-	public void setStar(int star) {
+	public void setStar(double star) {
 		this.star = star;
 	}
 	

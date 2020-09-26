@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -31,12 +34,20 @@
             <i class="fa fa-star" data-rate="4"></i>
             <i class="fa fa-star" data-rate="5"></i>
         </div>
-        <input class="hidden" type="hidden1" name="star" value=>
-        <textarea name="ctnt"></textarea>
+        <input class="hidden" type="hidden" name="star" value=>
+        <textarea name="ctnt"><c:if test="${loginUser.i_user eq null}">로그인후 이용가능한 서비스 입니다.</c:if></textarea>
         <input type="submit" value="Comment">
     </form>
     <div class="cmtList">
-    	<table></table>
+    	<table>
+    		<c:forEach items="${cmtList}" var="item">
+	    		<tr>
+	    			<td>${item.star}</td>
+	    			<td>${item.ctnt }</td>
+	    			<td>${item.cid }</td>
+	    		</tr>
+    		</c:forEach>
+    	</table>
     </div>
 </div>
 </body>
