@@ -9,3 +9,12 @@ $(function(){
             $('.make_star .hidden').val(star); //위에서 star 변수에 넣은 data-rate의 값을 hidden의 input태그 value값으로 넣겠다는 메소드                                 
         })
     });
+
+$(function(){
+	var rating =$('.cmtList .cmt_star')
+	rating.each(function(){
+		var targetScore = $(this).attr('data-rate');
+		console.log(targetScore)
+		$(this).find('i:nth-child(-n+'+targetScore+')').css({color:'#F05522'})
+	})
+})

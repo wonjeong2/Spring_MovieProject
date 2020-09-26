@@ -35,14 +35,22 @@
             <i class="fa fa-star" data-rate="5"></i>
         </div>
         <input class="hidden" type="hidden" name="star" value=>
-        <textarea name="ctnt"><c:if test="${loginUser.i_user eq null}">로그인후 이용가능한 서비스 입니다.</c:if></textarea>
+        <textarea name="ctnt"></textarea>
         <input type="submit" value="Comment">
     </form>
     <div class="cmtList">
     	<table>
     		<c:forEach items="${cmtList}" var="item">
 	    		<tr>
-	    			<td>${item.star}</td>
+	    			<td>
+	    				<span class="cmt_star" data-rate="${item.star }">
+		    				<i class="fa fa-star"></i>
+		    				<i class="fa fa-star"></i>
+		    				<i class="fa fa-star"></i>
+		    				<i class="fa fa-star"></i>
+		    				<i class="fa fa-star"></i>
+	    				</span>
+	    			</td>
 	    			<td>${item.ctnt }</td>
 	    			<td>${item.cid }</td>
 	    		</tr>
