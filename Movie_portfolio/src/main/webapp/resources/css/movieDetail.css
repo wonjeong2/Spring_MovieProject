@@ -30,7 +30,7 @@ body, html {
 	width: 300px;
 }
 
-.make_star {
+#make_star {
 	display: flex;
 	flex-direction: column;
 	max-width: 70%;
