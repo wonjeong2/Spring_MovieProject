@@ -44,6 +44,7 @@
 		</div>
 	</div>
 
+<div id="contentContainer">
 	<div class="wrap">
 		<div class="movie_form">
 			<img src="${movie.img }">
@@ -90,7 +91,6 @@
 			</table>
 		</div>
 	</div>
-
-
+</div>
 </body>
 </html>
