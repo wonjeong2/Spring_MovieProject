@@ -57,11 +57,21 @@ function closeCmtModWin() {
 		cmtModContainer.style.visibility = 'hidden'
 	}
 	
-	function showCmtModWin(i_comment, ctnt) {			
+function showCmtModWin(i_comment, ctnt) {			
 		cmtModContainer.style.visibility = 'visible'			
 		cmtFrm.i_comment.value = i_comment;
 		cmtFrm.ctnt.value = ctnt;
 	}
+	
+function delEvent() {
+	
+		if (confirm("정말 삭제하시겠습니까?") == true){   
+   			 document.form.submit();
+		} else {
+    		 return false;
+	}
+
+}
 	
 	
 	

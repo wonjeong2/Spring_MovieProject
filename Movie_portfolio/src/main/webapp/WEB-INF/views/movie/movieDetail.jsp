@@ -60,10 +60,11 @@
 			onsubmit="return check()">
 			<input type="hidden" name="movieTitle" value="${movie.movieTitle }">
 			<div class="rate">
-				<i class="fa fa-star" data-rate="1"></i> <i class="fa fa-star"
-					data-rate="2"></i> <i class="fa fa-star" data-rate="3"></i> <i
-					class="fa fa-star" data-rate="4"></i> <i class="fa fa-star"
-					data-rate="5"></i>
+				<i class="fa fa-star" data-rate="1"></i> 
+				<i class="fa fa-star" data-rate="2"></i> 
+				<i class="fa fa-star" data-rate="3"></i> 
+				<i class="fa fa-star" data-rate="4"></i> 
+				<i class="fa fa-star" data-rate="5"></i>
 			</div>
 			<input id="hidden" type="hidden" name="star" value="0">
 			<textarea id="ctnt" name="ctnt"></textarea>
@@ -81,8 +82,7 @@
 						<td>${item.ctnt }</td>
 						<td>${item.cid }</td>
 						<td><c:if test="${item.i_user == loginUser.i_user}">
-								<a
-									href="/cmtDel?i_comment=${item.i_comment }&i_user=${item.i_user}&movieTitle=${item.movieTitle}">삭제</a>
+								<a href="/cmtDel?i_comment=${item.i_comment }&i_user=${item.i_user}&movieTitle=${item.movieTitle}" onclick="return delEvent()">삭제</a>
 								<a href="#"
 									onclick="showCmtModWin(${item.i_comment}, '${item.ctnt.trim()}')">수정</a>
 							</c:if></td>
