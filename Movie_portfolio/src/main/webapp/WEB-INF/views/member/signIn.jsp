@@ -16,7 +16,7 @@
                 <div class="formBx">
                     <form action="/member/signInPost" method="post">
                         <h2>Sign In</h2>
-                        <input type="text" name="cid" placeholder="UserID">
+                        <input type="text" name="cid" placeholder="UserID" value="${cid}">
                         <input type="password" name="cpw" placeholder="UserPassword">
                         <div style="color:red;font-weight:bold">${msg }</div>
                         <div><input type="submit" value="Login"><span><a href="/member/loginKAKAO"><img src="/resources/img/kakao.png"></a></span></div>

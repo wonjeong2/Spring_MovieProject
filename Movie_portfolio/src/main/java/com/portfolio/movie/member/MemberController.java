@@ -29,24 +29,43 @@ public class MemberController {
 	public String login() {
 		return "member/signIn";
 	}
-	@RequestMapping(value = "/signInPost", method = RequestMethod.POST) //연결 브릿지 담당
+	
+	
+	@RequestMapping(value = "/signInPost", method = RequestMethod.POST) // 연결 브릿지 담당
 	public String loginPost(MemberVO mvo, Model model, HttpSession hs) {
-		System.out.println("Con_id:"+mvo.getCid());
-		System.out.println("Con_pw:"+mvo.getCpw());
-		String msg="에러발생";
-		int result = service.login(mvo, hs);
-		
-		if(result ==1){
-			return "redirect:/main";
-		}else if(result ==2) {
-			msg="아이디가 존재하지 않습니다.";
-		}else if(result == 3) {
-			msg="패스워드가 일치하지 않습니다.";
+		System.out.println("Con_id:" + mvo.getCid());
+		System.out.println("Con_pw:" + mvo.getCpw());
+		String msg = "에러발생!";
+
+		String cid = mvo.getCid();
+		String cpw = mvo.getCpw();
+
+		if (cid.equals("")) {
+			msg = "아이디를 입력해주세요";
+
+		} else if (!cid.equals("") && cpw.equals("")) {
+			msg = "비밀번호를 입력해주세요";
+			model.addAttribute("cid", cid);
+
+		} else {
+
+			int result = service.login(mvo, hs);
+
+			if (result == 1) {
+				return "redirect:/main";
+			} else if (result == 2) {
+				msg = "아이디가 존재하지 않습니다.";
+			} else if (result == 3) {
+				msg = "패스워드가 일치하지 않습니다.";
+				model.addAttribute("cid", cid);
+			}
 		}
-		model.addAttribute("msg",msg);
-		return "/member/signIn";
-		
+		model.addAttribute("msg", msg);
+		return "member/signIn";
+
 	}
+	
+	
 	@RequestMapping(value="/signUpPost", method=RequestMethod.POST)
 	public String join(MemberVO mvo, HttpSession hs, RedirectAttributes ra) {
 //		String rNumbers = (String)hs.getAttribute("rNumbers");
