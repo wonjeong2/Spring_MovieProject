@@ -18,6 +18,7 @@
                         <h2>Sign In</h2>
                         <input type="text" name="cid" placeholder="UserID">
                         <input type="password" name="cpw" placeholder="UserPassword">
+                        <div style="color:red;font-weight:bold">${msg }</div>
                         <div><input type="submit" value="Login"><span><a href="/member/loginKAKAO"><img src="/resources/img/kakao.png"></a></span></div>
                         <p class="signup">Dont't have an account ? <a href="#" onclick="toggleForm();">Sign Up</a></p>
                     </form>

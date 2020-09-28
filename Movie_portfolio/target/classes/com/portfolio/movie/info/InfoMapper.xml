@@ -8,7 +8,11 @@
 	<delete id="delCrawl">
 		DELETE FROM movie_info
 	</delete>
-	
+	<select id="listCount" resultType="int">
+		SELECT COUNT(*) 
+		FROM movie_cmt 
+		WHERE i_comment > 0
+	</select>
 	<select id="listCrawl" resultType="com.portfolio.movie.info.InfoVO">
 		SELECT * FROM movie_info;
 	</select>

@@ -2,7 +2,7 @@ package com.portfolio.movie.member;
 
 	
 
-import java.util.HashMap;	
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.portfolio.movie.common.Const;
-import com.portfolio.movie.common.MyUtils;
 
 @Controller
 @RequestMapping("/member")
@@ -34,7 +33,7 @@ public class MemberController {
 	public String loginPost(MemberVO mvo, Model model, HttpSession hs) {
 		System.out.println("Con_id:"+mvo.getCid());
 		System.out.println("Con_pw:"+mvo.getCpw());
-		String msg="에러발생!";
+		String msg="에러발생";
 		int result = service.login(mvo, hs);
 		
 		if(result ==1){
@@ -45,7 +44,7 @@ public class MemberController {
 			msg="패스워드가 일치하지 않습니다.";
 		}
 		model.addAttribute("msg",msg);
-		return "member/signIn";
+		return "/member/signIn";
 		
 	}
 	@RequestMapping(value="/signUpPost", method=RequestMethod.POST)
